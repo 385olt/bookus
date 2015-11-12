@@ -1,0 +1,52 @@
+
+body {
+
+}
+
+footer {
+	background-color: #333;
+	color: #CCC;
+	padding: 30px 20px 50px 20px;
+	margin-top: 100px;	
+	vertical-align: top;
+}
+
+.main-container {
+	min-height: 800px;
+}
+
+.header-row {
+	margin-top: 50px;
+}
+
+.tour-div {
+	text-align: right;
+	padding-top: 20px;
+	color: white
+}
+
+.panel-color {
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.3);
+	border-radius: 0;
+}
+
+.panel-dark {
+	color: white;
+	font-style: italic;
+	background-color: rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.3);
+	border-radius: 0;
+}
+
+.ulogin {
+	text-align: right;
+}
+
+.auth-reg {
+	padding-top: 10px;
+}
+
+u.dotted {
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
