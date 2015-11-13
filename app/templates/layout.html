@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <title>Bookus</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/wheelmenu.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jBox.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jBoxTooltipDark.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='js/html5shiv.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/respond.min.js') }}"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.file-input.js') }}"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="{{ url_for('static', filename='js/trianglify.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.wheelmenu.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jBox.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+	
+</head>
+<body>
+<div class="container main-container">
+	
+	<div class="row header-row">
+		<div class="col-md-6">
+			<h1><span class="glyphicon glyphicon-book"></span> bookus</h1>
+		</div>
+		<div class="col-md-6 tour-div">
+			Заинтересовались? Воспользуйтесь 
+			<button class="btn btn-info">туром по системе</button>
+		</div>
+	</div>
+	
+    <div class="row">
+		
+		<div class="col-md-12">
+			<div class="panel panel-dark">
+				<div class="panel-body">
+					<div class="raw">
+						{% if user %}
+							<div class="col-md-12">
+								Здравствуй <u class='dotted'>{{ user.username }}</u>
+							</div>
+						{% else %}
+
+							<div class="col-md-6 auth-reg">
+								<a href="#">Авторизуйтесь</a> или <a href="#">создайте аккаунт</a>
+							</div>
+							<div class="col-md-6 ulogin">
+								<script src="http://ulogin.ru/js/ulogin.js"></script>
+	                    		<div id="uLogin60287054" data-ulogin="display=panel;fields=first_name,last_name,email,photo_big;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=twitter,google,yandex,livejournal,openid,lastfm,linkedin,liveid,soundcloud,steam,flickr,uid,youtube,webmoney,foursquare,tumblr,googleplus,dudu,vimeo,instagram,wargaming;redirect_uri=http%3A%2F%2Fbookus.ru%2Fuser%2Fsocial_login"></div>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="row">
+		
+		<div class="col-md-8">
+			<div class="panel panel-color">
+				<div class="panel-body">
+
+					{% block content %}{% endblock %}
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-4">
+			<div class="panel panel-color">
+				<div class="panel-body">
+
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div><!-- /.container -->
+<footer>
+    All rights reserved &copy; 2015
+</footer>
+
+<a href="#wheel2" class="wheel-button nw">
+   <span>+</span>
+</a>
+<ul id="wheel2" data-angle="NW" class="wheel">
+	<li class="item tooltip" title="Почитать книги"><a href="#home"><span class="glyphicon glyphicon-lamp"></span></a></li>
+	<li class="item tooltip" title="Почитать записи"><a href="#home"><span class="glyphicon glyphicon-comment"></span></a></li>
+	<li class="item tooltipTop" title="Создать книгу"><a href="#home"><span class="glyphicon glyphicon-file"></span></a></li>
+	<li class="item tooltipTop" title="Написать запись"><a href="#home"><span class="glyphicon glyphicon-pencil"></span></a></li>
+</ul>
+
+<script>
+$(document).ready(function(){
+	customBg = new Trianglify().generate(document.body.clientWidth, document.body.clientHeight).dataUrl;
+	document.body.setAttribute('style', 'background-image: ' + customBg);
+	
+	$(".wheel-button").wheelmenu({
+		trigger: "hover",
+		animation: "fly", 
+		animationSpeed: "fast", 
+		angle: "NW",
+	});
+
+	$('.tooltip').jBox('Tooltip', {position: {x: 'left', y: 'center'},	outside: 'x', theme: 'TooltipDark'});
+	$('.tooltipTop').jBox('Tooltip', {theme: 'TooltipDark'});
+});
+</script>
+
+</body>
+</html>
