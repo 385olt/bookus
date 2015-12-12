@@ -56,9 +56,10 @@
 			<div class="panel panel-dark">
 				<div class="panel-body">
 					<div class="raw">
-						{% if user %}
+						{% if g.user.is_authenticated %}
 							<div class="col-md-12">
 								Здравствуй <u class='dotted'>{{ user.username }}</u>
+								<a href='{{ url_for('index') }}'>[Выйти]</a>
 							</div>
 						{% else %}
 
